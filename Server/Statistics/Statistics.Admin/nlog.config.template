@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      autoReload="true"
+      internalLogLevel="Info"
+      internalLogFile="Logs\log-internal.log">
+
+  <!-- enable asp.net core layout renderers -->
+  <extensions>
+    <add assembly="NLog.Web.AspNetCore"/>
+  </extensions>
+
+  <variable name="filePath" value="Logs\"/>
+
+  <targets>
+    <target xsi:type="File" 
+            name="allMessageFile"
+            fileName="${var:filePath}${shortdate}_allMessageLog.log"
+            layout="${longdate} | [${threadid}] | ${event-properties:item=EventId_Id} | ${uppercase:${level}} | ${message} ${exception:format=tostring} | ${logger}" />
+
+    <target xsi:type="File" 
+            name="errorsFile"
+            fileName="${var:filePath}${shortdate}_errorsLog.log"
+            layout="${longdate} | [${threadid}] | ${event-properties:item=EventId_Id} | ${uppercase:${level}} | ${message} ${exception:format=tostring} | ${logger}" />
+  </targets>
+
+  <rules>
+    <logger name="*" minlevel="Debug" writeTo="allMessageFile" />
+    <logger name="*" minlevel="Error" maxLevel="Fatal" writeTo="errorsFile" />
+  </rules>
+</nlog>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="EnvironmentSetup" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SourceNLogConfigFile>nlog.config.template</SourceNLogConfigFile>
+    <SourceAppSettingsFile>appsettings.json.template</SourceAppSettingsFile>
+    
+    <TargetNLogConfigFile>nlog.config</TargetNLogConfigFile>
+    <TargetAppSettingsFile>appsettings.json</TargetAppSettingsFile>
+  </PropertyGroup>
+  
+  <Target Name="EnvironmentSetup">
+    <Copy SourceFiles="$(SourceNLogConfigFile)" DestinationFiles="$(TargetNLogConfigFile)" Condition="!Exists($(TargetNLogConfigFile))"/>
+    <Copy SourceFiles="$(SourceAppSettingsFile)" DestinationFiles="$(TargetAppSettingsFile)" Condition="!Exists($(TargetAppSettingsFile))"/>
+  </Target>
+</Project>
