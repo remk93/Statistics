@@ -25,6 +25,8 @@ namespace Statistics.Admin
 
             services.SetControllerService();
 
+            services.AddSwaggerDocument();
+
             services.SetServicesDependencies();
 
             services.SetDbContext(Configuration);
@@ -36,6 +38,8 @@ namespace Statistics.Admin
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUi3();
             }
 
             app.UseStaticFiles();

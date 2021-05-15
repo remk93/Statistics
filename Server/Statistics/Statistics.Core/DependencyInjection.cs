@@ -6,7 +6,6 @@ namespace Statistics.Core
     {
         public static IServiceCollection AddCoreDependencies(this IServiceCollection services)
         {
-
             return services;
         }
     }
