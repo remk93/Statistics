@@ -1,17 +1,12 @@
-﻿using FluentValidation;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Statistics.Core;
 using Statistics.Core.AutoMapper;
-using Statistics.Core.Behaviours;
 using Statistics.Core.Exceptions;
 using Statistics.DataStorage.DataContext;
-using System;
-using System.Reflection;
 
 namespace Statistics.Admin.Extensions
 {
@@ -53,11 +48,7 @@ namespace Statistics.Admin.Extensions
         }
 
         public static void SetServicesDependencies(this IServiceCollection services)
-        {
-            services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
-            
+        {            
             services.AddCoreDependencies();            
         }
 

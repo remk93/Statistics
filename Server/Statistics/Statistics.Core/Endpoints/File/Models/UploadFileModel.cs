@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Statistics.Core.Enums;
 
-namespace Statistics.Core.Modules.File.Models
+namespace Statistics.Core.Endoints.File.Models
 {
     public class UploadFileModel
     {

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Statistics.Core.Helpers;
 using System.IO;
 
-namespace Statistics.Core.Modules.File
+namespace Statistics.Core.Endoints.File
 {
     public class UploadCommandValidator : AbstractValidator<UploadCommand>
     {

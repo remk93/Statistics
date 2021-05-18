@@ -2,7 +2,7 @@
 
 namespace Statistics.Core.Models
 {
-    public class Error
+    public record Error
     {
         public Error() { }
 
@@ -13,7 +13,7 @@ namespace Statistics.Core.Models
         }
 
         [JsonProperty("Error")]
-        public string Message { get; set; }
-        public string Description { get; set; }
+        public string Message { get; init; }
+        public string Description { get; init; }
     }
 }

@@ -9,7 +9,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Statistics.Core.Modules.File
+namespace Statistics.Core.Endoints.File
 {
     public class UploadHandler : IRequestHandler<UploadCommand, Unit>
     {

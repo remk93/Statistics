@@ -3,19 +3,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 using Statistics.Core.Controllers;
-using Statistics.Core.Modules.File;
+using Statistics.Core.Endoints.File;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Statistics.Admin.Endpoints.File
 {
-    public class UploadEndpoint : BaseApiController
+    public class UploadController : BaseApiController
     {
         private readonly IMediator _mediator;
 
-        public UploadEndpoint(
-            ILogger<UploadEndpoint> logger,
+        public UploadController(
+            ILogger<UploadController> logger,
             IMediator mediator) : base(logger)
         {
             _mediator = mediator;
@@ -33,7 +32,7 @@ namespace Statistics.Admin.Endpoints.File
         {
             try
             {
-                await _mediator.Send(command, new CancellationTokenSource().Token);
+                await _mediator.Send(command);
                 return Ok();
             }
             catch (Exception ex)
